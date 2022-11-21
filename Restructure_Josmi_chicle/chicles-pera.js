@@ -18,39 +18,41 @@ window.addEventListener('load', () => {
 	calculateDeliveryButton.addEventListener('click', () => {
 		const zipCode = document.getElementById('zip-code').value;
 		console.log(typeof zipCode);
-		let deliveryCost;
-		
+		versionWithNumbers();
+
 	})
 });
 
-function versionWithNumbers () {
+function versionWithNumbers() {
+	const priceWithoutDeliveryCost = 5;
 	const zipCode = document.getElementById('zip-code').value;
 	let deliveryCost;
-		// si el número de caracteres de zipCode es distinto de 5
-		if (zipCode.length !== 5 || zipCode.startsWith('0') || isNaN(zipCode)) {
-			showBadZipFormat();
-			return;
-		}
+	// si el número de caracteres de zipCode es distinto de 5
+	if (zipCode.length !== 5 || zipCode.startsWith('0') || isNaN(zipCode)) {
+		showBadZipFormat();
+		return;
+	}
 
-		const firstZipCodeChar = Number(zipCode.charAt(0));
+	const firstZipCodeChar = Number(zipCode.charAt(0));
 
-		console.log(typeof firstZipCodeChar);
+	console.log(typeof firstZipCodeChar);
 
-		if (zipCode.startsWith('10')) {
-			deliveryCost = 0;
-		} else if (firstZipCodeChar > 0 && firstZipCodeChar <= 5) {
-			deliveryCost = 2;
-		} else if (firstZipCodeChar > 5 && firstZipCodeChar <= 8) {
-			deliveryCost = 3;
-		} else {
-			deliveryCost = 5;
-		}
+	if (zipCode.startsWith('10')) {
+		deliveryCost = 0;
+	} else if (firstZipCodeChar > 0 && firstZipCodeChar <= 5) {
+		deliveryCost = 2;
+	} else if (firstZipCodeChar > 5 && firstZipCodeChar <= 8) {
+		deliveryCost = 3;
+	} else {
+		deliveryCost = 5;
+	}
 
-		showDeliveryCost(deliveryCost);
-		showTotal(priceWithoutDeliveryCost + deliveryCost);
+	showDeliveryCost(deliveryCost);
+	showTotal(priceWithoutDeliveryCost + deliveryCost);
 }
 
 function versionWithStringsAndStartsWith() {
+	const priceWithoutDeliveryCost = 5;
 	const zipCode = document.getElementById('zip-code').value;
 	console.log(typeof zipCode);
 	let deliveryCost;
